@@ -1,0 +1,19 @@
+div.form-group
+    label(for="name") Username
+    input(type="text", name="username", value=user.username).form-control
+
+div.form-group
+    label(for="type") Password
+    input(type="password", name="password", value=user.password).form-control
+
+div.form-group
+    label(for="type") Firstname
+    input(type="text", name="firstname", value=user.profile.firstName).form-control
+
+div.form-group
+    label(for="type") Lastname
+    input(type="text", name="lastname", value=user.profile.lastName).form-control
+
+button(type="submit").btn.btn-primary.btn-sm Save
+| &nbsp;
+a(href="/user").btn.btn-default.btn-sm Cancel

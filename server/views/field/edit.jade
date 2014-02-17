@@ -1,0 +1,9 @@
+extends ../layout
+block menu
+    include ../partials/menu
+
+block container
+    h1 Edit Field
+
+    form(action="/field?id="+field.id, method="POST", role="form")
+        include form

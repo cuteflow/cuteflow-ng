@@ -1,0 +1,7 @@
+extends ../layout
+block menu
+    include ../partials/menu
+block container
+    h1 Create Field
+    form(action="/field", method="POST", role="form")
+        include form

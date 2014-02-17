@@ -1,0 +1,22 @@
+
+bower_components
+node_modules
+npm-debug.log
+
+
+########################
+# misc / editors
+########################
+*~
+*#
+.DS_STORE
+.netbeans
+nbproject
+.idea
+*.iml
+
+
+########################
+# local config
+########################
+config/config.js

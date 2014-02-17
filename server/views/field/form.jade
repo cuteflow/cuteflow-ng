@@ -1,0 +1,19 @@
+div.form-group
+    label(for="name") Name
+    input(type="text", name="name", value=field.name).form-control
+
+div.form-group
+    label(for="type") Type
+    select(name="type").form-control
+        option(value="text", selected=field.type == "text") Text
+        option(value="checkbox", selected=field.type == "checkbox") Checkbox
+        option(value="select", selected=field.type == "select") Select
+
+div.form-group
+    label(for="readonly")
+    input(type="checkbox", name="readonly", checked=field.readOnly)
+    | &nbsp; Readonly
+
+button(type="submit").btn.btn-primary.btn-sm Save
+| &nbsp;
+a(href="/field").btn.btn-default.btn-sm Cancel

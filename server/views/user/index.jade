@@ -1,0 +1,33 @@
+extends ../layout
+
+block menu
+    include ../partials/menu
+
+block container
+    h1 User
+
+    div.pull-right
+        a(href="/user/create").btn.btn-link.btn-sm
+            i.glyphicon.glyphicon-plus
+            | &nbsp;
+            | New User
+
+    table.table.table-striped.table-bordered.table-condensed
+        thead
+            tr
+                th Username
+                th Firstname
+                th Lastname
+                th &nbsp;
+        tbody
+            each user, i in users
+                tr
+                    td= user.username
+                    td= user.profile.firstName
+                    td= user.profile.lastName
+                    td
+                        a(href="user/delete?id="+user.id)
+                            i.glyphicon.glyphicon-trash
+                        | &nbsp;
+                        a(href="user/edit?id="+user.id)
+                            i.glyphicon.glyphicon-pencil
