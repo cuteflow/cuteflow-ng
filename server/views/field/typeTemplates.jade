@@ -1,0 +1,30 @@
+script(type="text/template", id="type-text-template")
+    +field-label('text', t("fields.form.defaultvalue"), 'text_default', 'text-default')
+    +field-label('text', t("fields.form.validationRegExp"), 'text_validation', 'text-validation')
+
+script(type="text/template", id="type-textarea-template")
+    +field-label('textarea', t("fields.form.defaultvalue"), 'textarea_default', 'textarea-default')
+
+script(type="text/template", id="type-number-template")
+    +field-label('text', t("fields.form.defaultvalue"), 'number_default', 'number-default')
+    +field-label('text', t("fields.form.validationRegExp"), 'number_validation', 'number-validation')
+
+script(type="text/template", id="type-date-template")
+    +select-label(t("fields.form.dateFormat"), 'date_format', 'date-format', "", [
+        {label:'dd-mm-YYYY', value:'dd-mm-YYYY'},
+        {label:'mm-dd-YYYY', value:'mm-dd-YYYY'},
+        {label:'YYYY-mm-dd', value:'YYYY-mm-dd'}])
+    +field-label('text', t("fields.form.defaultvalue"), 'date_default', 'date-default')
+    +field-label('text', t("fields.form.validationRegExp"), 'date_validation', 'date-validation')
+
+script(type="text/template", id="type-checkbox-template")
+    +field-label('checkbox', t("fields.form.defaultvalue"), 'checkbox_default', 'checkbox-default')
+
+script(type="text/template", id="type-file-template")
+    +field-label('text', t("fields.form.validationRegExp"), 'text_validation', 'text-validation')
+
+script(type="text/template", id="type-checkboxgroup-template")
+
+script(type="text/template", id="type-radiogroup-template")
+
+script(type="text/template", id="type-select-template")

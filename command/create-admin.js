@@ -32,5 +32,5 @@ prompt.get(schema, function (err, result) {
         }
     });
 
-    console.log("✔ Admin user created".green);
+    console.log("✔ Admin user created. Please press Ctrl+C".green);
 });

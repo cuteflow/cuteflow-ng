@@ -1,9 +1,14 @@
 extends ../layout
+block javascripts
+    script(type="text/javascript", src="/bower_components/lodash/dist/lodash.min.js")
+    script(type="text/javascript", src="/bower_components/jquery/jquery.min.js")
+    script(type="text/javascript", src="/js/fields.js")
+
 block menu
     include ../partials/menu
 
 block container
-    h1 Edit Field
+    h1= t("fields.edit.header")
 
     form(action="/field?id="+field.id, method="POST", role="form")
         include form

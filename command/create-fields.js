@@ -19,7 +19,5 @@ field.name = "Preis";
 field.type = "checkbox";
 
 field.save(function (err) {
-    if (err) {
-        console.log('meow');
-    }
+    console.log("✔ Fields created. Please press Ctrl+C".green);
 });

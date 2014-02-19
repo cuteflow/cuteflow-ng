@@ -3,7 +3,7 @@ block menu
     include ../partials/menu
 
 block container
-    h1 Edit User
+    h1= t("user.edit.header")
 
     form(action="/user?id="+user.id, method="POST", role="form")
         include form

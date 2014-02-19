@@ -1,10 +1,10 @@
-var DefaultController = require('../controller/DefaultController'),
+var DashboardController = require('../controller/DashboardController'),
     AuthController = require('../controller/AuthController')
     FieldController = require('../controller/FieldController'),
     UserController = require('../controller/UserController');
 
 module.exports = function(app) {
-    var defaultController = new DefaultController();
+    var defaultController = new DashboardController();
     var authController = new AuthController(passport);
     var fieldController = new FieldController();
     var userController = new UserController();

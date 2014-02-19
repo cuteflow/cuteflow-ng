@@ -1,0 +1,112 @@
+{
+    "login": {
+        "header": "Please sign in",
+        "username": "Username",
+        "password": "Password",
+        "submit": "Sign in"
+    },
+    "menu": {
+        "dashboard": "Dashboard",
+        "fields": "Fields",
+        "user": "User",
+        "workflow": "Workflow",
+        "myworkflows": "My Workflows",
+        "allworkflows": "All Workflows",
+        "workflowdesign": "Workflow-Design",
+        "mailinglist": "Mailing list",
+        "administration": "Administration",
+        "system": "System",
+        "accountsettings": "Settings",
+        "account": "Account",
+        "logout": "Logout"
+    },
+    "dashboard": {
+        "header": "Dashboard"
+    },
+    "user": {
+        "header": "User",
+        "index": {
+            "create": "New User"
+        },
+        "table": {
+            "username": "Username",
+            "firstname": "Firstname",
+            "lastname": "Lastname"
+        },
+        "edit": {
+            "header": "Edit User"
+        },
+        "create": {
+            "header": "New User"
+        },
+        "form": {
+            "username": "Username",
+            "firstname": "Firstname",
+            "lastname": "Lastname",
+            "password": "Password",
+            "email": "eMail"
+        },
+        "save": {
+            "success": "User saved successfully",
+            "validation": {
+                "password": "Password requires 6 to 20 characters",
+                "email": "A valid email address is required",
+                "username": "A valid Username is required",
+                "firstname": "A valid Firstname is required",
+                "lastname": "A valid Lastname is required"
+            }
+        },
+        "remove": {
+            "success": "Removed User '__username__' successfully"
+        }
+    },
+    "fields": {
+        "edit": {
+            "header": "Edit Field"
+        },
+        "create": {
+            "header": "New Field"
+        },
+        "header": "Fields",
+        "index": {
+            "create": "New Field"
+        },
+        "table": {
+            "name": "Name",
+            "type": "Type"
+        },
+        "types": {
+            "text": "Textfield",
+            "checkbox": "Yes/no",
+            "select": "Selectbox",
+            "date": "Datum",
+            "number": "Number",
+            "file": "File",
+            "radiogroup": "Radiogroup",
+            "checkboxgroup": "Checkboxgroup",
+            "textarea": "Textarea"
+        },
+        "form": {
+            "name": "Name",
+            "type": "Type",
+            "readonly": "Readonly",
+            "defaultvalue": "Defaultvalue",
+            "validationRegExp": "Regular Expression for validation",
+            "dateFormat": "Date format"
+        },
+        "save": {
+            "success": "Field saved successfully",
+            "validation": {
+                "name": "A valid Name is required"
+            }
+        },
+        "remove": {
+            "success": "Removed Field '__fieldname__' successfully"
+        }
+    },
+    "form": {
+        "save": "Save",
+        "cancel": "Cancel"
+    }
+
+}

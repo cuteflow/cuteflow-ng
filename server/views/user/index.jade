@@ -4,20 +4,20 @@ block menu
     include ../partials/menu
 
 block container
-    h1 User
+    h1= t("user.header")
 
     div.pull-right
         a(href="/user/create").btn.btn-link.btn-sm
             i.glyphicon.glyphicon-plus
             | &nbsp;
-            | New User
+            span= t("user.index.create")
 
     table.table.table-striped.table-bordered.table-condensed
         thead
             tr
-                th Username
-                th Firstname
-                th Lastname
+                th= t("user.table.username")
+                th= t("user.table.firstname")
+                th= t("user.table.lastname")
                 th &nbsp;
         tbody
             each user, i in users
@@ -31,3 +31,5 @@ block container
                         | &nbsp;
                         a(href="user/edit?id="+user.id)
                             i.glyphicon.glyphicon-pencil
+
+    != createPager(pages, page)

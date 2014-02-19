@@ -1,0 +1,8 @@
+{
+    "login": {
+        "header": "Bitte melden Sie sich an",
+        "username": "Benutzername",
+        "password": "Passwort",
+        "submit": "Anmelden"
+    }
+}

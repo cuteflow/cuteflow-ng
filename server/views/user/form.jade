@@ -1,19 +1,11 @@
-div.form-group
-    label(for="name") Username
-    input(type="text", name="username", value=user.username).form-control
+include ../mixins/form
 
-div.form-group
-    label(for="type") Password
-    input(type="password", name="password", value=user.password).form-control
++field-label('text', t("user.form.username"), 'username', 'username', user.username)
++field-label('password', t("user.form.password"), 'password', 'password', password)
++field-label('email', t("user.form.email"), 'email', 'email', user.email)
++field-label('text', t("user.form.firstname"), 'firstname', 'firstname', user.profile.firstName)
++field-label('text', t("user.form.lastname"), 'lastname', 'lastname', user.profile.lastName)
 
-div.form-group
-    label(for="type") Firstname
-    input(type="text", name="firstname", value=user.profile.firstName).form-control
-
-div.form-group
-    label(for="type") Lastname
-    input(type="text", name="lastname", value=user.profile.lastName).form-control
-
-button(type="submit").btn.btn-primary.btn-sm Save
+button(type="submit").btn.btn-primary.btn-sm= t("form.save")
 | &nbsp;
-a(href="/user").btn.btn-default.btn-sm Cancel
+a(href="/user").btn.btn-default.btn-sm= t("form.cancel")

@@ -4,28 +4,30 @@ block menu
     include ../partials/menu
 
 block container
-    h1 Fields
+    h1= t("fields.header")
 
     div.pull-right
         a(href="/field/create").btn.btn-link.btn-sm
             i.glyphicon.glyphicon-plus
             | &nbsp;
-            | New Field
+            span= t("fields.index.create")
 
     table.table.table-striped.table-bordered.table-condensed
         thead
             tr
-                th Name
-                th Type
+                th= t("fields.table.name")
+                th= t("fields.table.type")
                 th &nbsp;
         tbody
             each field, i in fields
                 tr
                     td= field.name
-                    td= field.type
+                    td= t("fields.types."+field.type)
                     td
                         a(href="field/delete?id="+field.id)
                             i.glyphicon.glyphicon-trash
                         | &nbsp;
                         a(href="field/edit?id="+field.id)
                             i.glyphicon.glyphicon-pencil
+
+    != createPager(pages, page)

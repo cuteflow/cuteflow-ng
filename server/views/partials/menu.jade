@@ -1,41 +1,45 @@
 li
-    a(href="#") Dashboard
+    a(href="#")= t("menu.dashboard")
 li.dropdown
     a(href="#", data-toggle="dropdown").dropdown-toggle
-        | Workflows
+        != t("menu.workflow")
+        | &nbsp;
         b.caret
     ul.dropdown-menu
         li
-            a(href="#") My Workflows
+            a(href="#")= t("menu.myworkflows")
         li
-            a(href="#") All Workflows
+            a(href="#")= t("menu.allworkflows")
 li.dropdown
     a(href="#", data-toggle="dropdown").dropdown-toggle
-        | Workflow-Design
+        != t("menu.workflowdesign")
+        | &nbsp;
         b.caret
     ul.dropdown-menu
         li
-            a(href="/field/") Fields
+            a(href="/field/")= t("menu.fields")
         li
-            a(href="#") Workflow
+            a(href="#")= t("menu.workflow")
         li
-            a(href="#") Mailing list
+            a(href="#")= t("menu.mailinglist")
 li.dropdown
     a(href="#", data-toggle="dropdown").dropdown-toggle
-        | Administration
+        != t("menu.administration")
+        | &nbsp;
         b.caret
     ul.dropdown-menu
         li
-            a(href="/user") User
+            a(href="/user")= t("user.header")
         li
-            a(href="#") System
+            a(href="#")= t("menu.system")
 
 li.dropdown
     a(href="#", data-toggle="dropdown").dropdown-toggle
-        | Account
+        != t("menu.account")
+        | &nbsp;
         b.caret
     ul.dropdown-menu
         li
-            a(href="#") Settings
+            a(href="#")= t("menu.accountsettings")
         li
-            a(href="/logout") Logout
+            a(href="/logout")= t("login.logout")

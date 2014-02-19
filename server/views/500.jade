@@ -1,0 +1,11 @@
+extends layout
+
+block container
+    h1 Whoopsy daisy, something went wrong
+    br
+    h3 500
+
+    #error-message-box
+        #error-stack-trace
+            pre
+                code!= error

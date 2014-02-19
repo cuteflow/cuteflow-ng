@@ -1,7 +1,7 @@
 extends ../layout
 block container
     form.form-signin(role="form", action="login", method="POST")
-        h2.form-signin-heading Please sign in
-        input(type="text", placeholder="Username", name="username", required, autofocus).form-control
-        input(type="password", placeholder="Password", name="password", required).form-control
-        button.btn.btn-primary.btn-block(type="submit") Sign in
+        h3.form-signin-heading= t("login.header")
+        input(type="text", placeholder=t("login.username"), name="username", required, autofocus).form-control
+        input(type="password", placeholder=t("login.password"), name="password", required).form-control
+        button.btn.btn-primary.btn-block(type="submit")= t("login.submit")

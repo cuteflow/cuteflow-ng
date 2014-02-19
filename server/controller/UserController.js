@@ -1,6 +1,6 @@
 var _ = require('lodash'),
     User = require('../models/User.js'),
-    validator = require('validator');
+    i18n = require('i18next');
 
 var UserController = function UserController() {
     _.bindAll(this);
@@ -19,57 +19,78 @@ UserController.prototype.index = function(req, res) {
                 });
 };
 
-UserController.prototype.delete = function(req, res) {
-    if (!req.query.id || req.query.id == "") return res.send(404);
+UserController.prototype.delete = function(req, res, next) {
+    if (!req.query.id || req.query.id == "") return next();
 
     User.findById(req.query.id, function(err, user) {
-        if (err || !user) return res.send(404);
+        if (err || !user) return next();
         user.remove();
 
-        req.flash('success', { msg: "Removed User '"+user.username+"' successfully" });
+        req.flash('success', { msg: i18n.t("fields.remove.success", user.username) });
         res.redirect('/user');
     });
 }
 
 UserController.prototype.create = function(req, res) {
-    res.render('user/create', {user: new User()});
+    res.render('user/create', {user: new User(), password: "", errors: {}});
 }
 
-UserController.prototype.edit = function(req, res) {
-    if (!req.query.id || req.query.id == "") return res.send(404);
+UserController.prototype.edit = function(req, res, next) {
+    if (!req.query.id || req.query.id == "") return next();
 
     User.findById(req.query.id, function(err, user) {
-        if (err || !user) return res.send(404);
+        if (err || !user) return next();
 
-        res.render('user/edit', {user: user});
+        res.render('user/edit', {user: user, password: "cfpwd-hasnotchanged-$§!", errors: {}});
     });
 }
 
-UserController.prototype.save = function(req, res) {
+UserController.prototype.save = function(req, res, next) {
+
+    req.assert('password', i18n.t('user.save.validation.password')).len(6,20);
+    req.assert('email', i18n.t('user.save.validation.email')).isEmail();
+    req.assert('username', i18n.t('user.save.validation.username')).notEmpty();
+    req.assert('firstname', i18n.t('user.save.validation.firstname')).notEmpty();
+    req.assert('lastname', i18n.t('user.save.validation.lastname')).notEmpty();
 
     var values = {
         username: req.body.username,
-        password: req.body.password,
+        email: req.body.email,
         profile: {
             'firstName': req.body.firstname,
             'lastName': req.body.lastname
         }
     }
 
-    if (!req.query.id || req.query.id == "") {
-        var user = new User(values);
-        user.save();
+    var errors = req.validationErrors(true);
+    if (!errors) {
+        if (req.body.password != "cfpwd-hasnotchanged-$§!") {
+            values.password = req.body.password;
+        }
 
-        req.flash('success', {msg: "User saved successfully"});
-        res.redirect('/user');
+        if (!req.query.id || req.query.id == "") {
+            var user = new User(values);
+            user.save();
+
+            req.flash('success', {msg: i18n.t("user.save.success")});
+            res.redirect('/user');
+        }
+        else {
+            User.findOneAndUpdate({"_id": req.query.id}, values, function(err, user) {
+                if (!user) return next();
+
+                req.flash('success', {msg: i18n.t("user.save.success")});
+                res.redirect('/user');
+            });
+        }
     }
     else {
-        User.findOneAndUpdate({"_id": req.query.id}, values, function(err, user) {
-            if (!user) return res.send(404);
+        var user = new User(values);
 
-            req.flash('success', {msg: "User saved successfully"});
-            res.redirect('/user');
-        });
+        var template = (!req.query.id || req.query.id == "") ? "user/create" : "user/edit";
+        var password = (!req.query.id || req.query.id == "") ? "" : "cfpwd-hasnotchanged-$§!";
+
+        res.render(template, {user: user, password: password, errors: errors});
     }
 }
 

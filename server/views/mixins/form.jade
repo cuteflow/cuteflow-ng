@@ -1,0 +1,35 @@
+mixin field-label(type, label, name, id, value)
+    - if (errors != null && (errors[name])) {
+        .form-group.has-error.has-feedback
+            label(for=name).control-label= label
+            input(type=type, name=name, id=name, value=value || "", autocomplete="off").form-control
+            span.help-block #{errors[name].msg}
+            if (errors[name])
+                span.glyphicon.glyphicon-remove.form-control-feedback
+    - } else {
+        div.form-group
+            label(for=name).control-label= label
+            input(type=type, name=name, id=name, value=value || "", autocomplete="off").form-control
+    - }
+
+mixin checkbox-label(label, name, id, value)
+    div.form-group
+        label(for=name)
+        input(type="checkbox", name=name, id=id, checked=value)
+        | &nbsp;
+        != label
+
+mixin select-label(label, name, id, value, options)
+    - if (errors != null && (errors[name])) {
+        .form-group.has-error.has-feedback
+            label(for=name).control-label= label
+            select(name=name, id=id).form-control
+                - each option in options
+                    option(value=option.type, selected=value == option.type)= option.label
+    - } else {
+        div.form-group
+            label(for=name).control-label= label
+            select(name=name, id=id).form-control
+                - each option in options
+                    option(value=option.value, selected=value == option.value)= option.label
+    - }

@@ -2,6 +2,6 @@ extends ../layout
 block menu
     include ../partials/menu
 block container
-    h1 Create User
+    h1= t("user.edit.header")
     form(action="/user", method="POST", role="form")
         include form

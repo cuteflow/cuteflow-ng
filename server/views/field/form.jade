@@ -1,19 +1,24 @@
-div.form-group
-    label(for="name") Name
-    input(type="text", name="name", value=field.name).form-control
+include ../mixins/form
 
-div.form-group
-    label(for="type") Type
-    select(name="type").form-control
-        option(value="text", selected=field.type == "text") Text
-        option(value="checkbox", selected=field.type == "checkbox") Checkbox
-        option(value="select", selected=field.type == "select") Select
++field-label('text', t("fields.form.name"), 'fieldname', 'fieldname', field.name)
++select-label(t("fields.form.type"), 'type', 'type', field.type, [
+        {label:t("fields.types.text"), value:"text"},
+        {label:t("fields.types.textarea"), value:"textarea"},
+        {label:t("fields.types.file"), value:"file"},
+        {label:t("fields.types.date"), value:"date"},
+        {label:t("fields.types.number"), value:"number"},
+        {label:t("fields.types.checkbox"), value:"checkbox"},
+        {label:t("fields.types.select"), value:"select"},
+        {label:t("fields.types.radiogroup"), value:"radiogroup"},
+        {label:t("fields.types.checkboxgroup"), value:"checkboxgroup"}])
 
-div.form-group
-    label(for="readonly")
-    input(type="checkbox", name="readonly", checked=field.readOnly)
-    | &nbsp; Readonly
++checkbox-label(t("fields.form.readonly"), 'readonly', 'readonly', field.readonly)
 
-button(type="submit").btn.btn-primary.btn-sm Save
+hr(size=1)
+div(id="type-config")
+
+button(type="submit").btn.btn-primary.btn-sm= t("form.save")
 | &nbsp;
-a(href="/field").btn.btn-default.btn-sm Cancel
+a(href="/field").btn.btn-default.btn-sm= t("form.cancel")
+
+include typeTemplates
