@@ -41,7 +41,7 @@ module.exports = function(app) {
         app.use(app.router);
 
         app.use(function(req, res, next){
-            console.log("404");
+            console.log("404", req.originalUrl);
             return res.status(404).render('404', { url: req.originalUrl, error: 'Not found' })
         });
 

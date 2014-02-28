@@ -12,12 +12,31 @@ mixin field-label(type, label, name, id, value)
             input(type=type, name=name, id=name, value=value || "", autocomplete="off").form-control
     - }
 
+mixin textara-label(label, name, id, value, rows)
+    - if (errors != null && (errors[name])) {
+        .form-group.has-error.has-feedback
+            label(for=name).control-label= label
+            textarea(name=name, id=name, autocomplete="off", rows=rows||3).form-control
+                != value
+            span.help-block #{errors[name].msg}
+            if (errors[name])
+                span.glyphicon.glyphicon-remove.form-control-feedback
+    - } else {
+        div.form-group
+            label(for=name).control-label= label
+            textarea(name=name, id=name, autocomplete="off", rows=rows||3).form-control
+                != value
+    - }
+
 mixin checkbox-label(label, name, id, value)
     div.form-group
-        label(for=name)
-        input(type="checkbox", name=name, id=id, checked=value)
-        | &nbsp;
-        != label
+        label(for=name)= label
+
+        - if (value != "") {
+            input(type="checkbox", name=name, id=id, checked="checked", value="checked")
+        - } else {
+            input(type="checkbox", name=name, id=id, value="checked")
+        - }
 
 mixin select-label(label, name, id, value, options)
     - if (errors != null && (errors[name])) {

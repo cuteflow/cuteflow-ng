@@ -1,0 +1,42 @@
+mixin typeText(fieldConfiguration)
+    +field-label('text', t("fields.form.defaultvalue"), 'text_default', 'text-default', fieldConfiguration.default || "")
+    +field-label('text', t("fields.form.validationRegExp"), 'text_validation', 'text-validation', fieldConfiguration.validationRegexp || "")
+
+mixin typeTextarea(fieldConfiguration)
+    +textara-label(t("fields.form.defaultvalue"), 'textarea_default', 'textarea-default', fieldConfiguration.default || "", 4)
+
+mixin typeNumber(fieldConfiguration)
+    +field-label('text', t("fields.form.defaultvalue"), 'number_default', 'number-default', fieldConfiguration.default || "")
+    +field-label('text', t("fields.form.validationRegExp"), 'number_validation', 'number-validation', fieldConfiguration.validationRegexp || "")
+
+mixin typeFile(fieldConfiguration)
+    +field-label('text', t("fields.form.validationRegExp"), 'file_validation', 'file-validation', fieldConfiguration.validationRegexp || "")
+
+mixin typeCheckbox(fieldConfiguration)
+    +checkbox-label(t("fields.form.defaultvalue"), 'checkbox_default', 'checkbox-default', fieldConfiguration.default || "")
+
+mixin typeDate(fieldConfiguration)
+    +select-label(t("fields.form.dateFormat"), 'date_format', 'date-format', fieldConfiguration.dateFormat || "", [
+        {label:'dd-mm-YYYY', value:'dd-mm-YYYY'},
+        {label:'mm-dd-YYYY', value:'mm-dd-YYYY'},
+        {label:'YYYY-mm-dd', value:'YYYY-mm-dd'}])
+    +field-label('text', t("fields.form.defaultvalue"), 'date_default', 'date-default', fieldConfiguration.default || "")
+    +field-label('text', t("fields.form.validationRegExp"), 'date_validation', 'date-validation', fieldConfiguration.validationRegexp || "")
+
+mixin typeSelect(fieldConfiguration)
+    - if (fieldConfiguration.options && fieldConfiguration.options.length() > 0) {
+        - each option in fieldConfiguration.options
+            li
+                input(type="radio")
+                input(type="text")
+                a(href="#")
+                    i.glyphicon.glyphicon-add
+    - } else {
+        - for (var i=1; i < 5; i++) {
+            li
+                input(type="radio")
+                input(type="text")
+                a(href="#")
+                    i.glyphicon.glyphicon-plus
+        - }
+    - }

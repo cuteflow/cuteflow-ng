@@ -1,4 +1,5 @@
 include ../mixins/form
+include type/types
 
 +field-label('text', t("fields.form.name"), 'fieldname', 'fieldname', field.name)
 +select-label(t("fields.form.type"), 'type', 'type', field.type, [
@@ -16,6 +17,21 @@ include ../mixins/form
 
 hr(size=1)
 div(id="type-config")
+    case field.type
+        when 'text'
+            +typeText(field.configuration)
+        when 'textarea'
+            +typeTextarea(field.configuration)
+        when 'number'
+            +typeNumber(field.configuration)
+        when 'file'
+            +typeFile(field.configuration)
+        when 'checkbox'
+            +typeCheckbox(field.configuration)
+        when 'date'
+            +typeDate(field.configuration)
+        when 'select'
+            +typeSelect(field.configuration)
 
 button(type="submit").btn.btn-primary.btn-sm= t("form.save")
 | &nbsp;

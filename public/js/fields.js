@@ -8,7 +8,7 @@ $(function() {
             case 'select': template = _.template($('#type-select-template').html(), {}); break;
             case 'file': template = _.template($('#type-file-template').html(), {}); break;
             case 'radiogroup': template = _.template($('#type-radio-template').html(), {}); break;
-            case 'checkboxgroup': template = _.template($('#type-radio-template').html(), {}); break;
+            case 'checkboxgroup': template = _.template($('#type-checkboxgroup-template').html(), {}); break;
             case 'date': template = _.template($('#type-date-template').html(), {}); break;
             case 'number': template = _.template($('#type-number-template').html(), {}); break;
         }
@@ -16,6 +16,6 @@ $(function() {
         if (template != null) {
             $("#type-config").html(template);
         }
-    })
+    });
 });
 

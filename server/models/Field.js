@@ -6,8 +6,7 @@ var fieldSchema = new mongoose.Schema({
     type: String,
     readOnly: Boolean,
 
-    configuration: String,
-    defaultValue: String
+    configuration: Object
 });
 
 fieldSchema.plugin(timestamps);
