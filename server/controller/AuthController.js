@@ -25,11 +25,11 @@ AuthController.prototype.login = function(req, res, next) {
             return res.redirect('/');
         });
     })(req, res, next);
-}
+};
 
 AuthController.prototype.logout = function(req, res) {
     req.logout();
     res.redirect('/');
-}
+};
 
 module.exports = AuthController;
