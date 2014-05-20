@@ -12,18 +12,18 @@ module.exports = function helpers() {
 
             str += "<ul class='pagination'>";
 
-            var page = params.page || 0;
+            page = params.page || 0;
 
-            str += '<li><a href="'+parsedUrl.href+'?'+qs.stringify(params)+'">&laquo;</a></li>'
+            str += '<li><a href="'+parsedUrl.href+'?'+qs.stringify(params)+'">&laquo;</a></li>';
 
             for (var p=0; p <= pages; p++) {
-                params.page = p
-                var clas = page == p ? "active" : "no"
-                str += '<li class="'+clas+'"><a href="'+parsedUrl.href+'?'+qs.stringify(params)+'">'+ (p+1) +'</a></li>'
+                params.page = p;
+                var clas = page == p ? "active" : "no";
+                str += '<li class="'+clas+'"><a href="'+parsedUrl.href+'?'+qs.stringify(params)+'">'+ (p+1) +'</a></li>';
             }
 
-            params.page = --p
-            str += '<li><a href="'+parsedUrl.href+'?'+qs.stringify(params)+'">&raquo;</a></li>'
+            params.page = --p;
+            str += '<li><a href="'+parsedUrl.href+'?'+qs.stringify(params)+'">&raquo;</a></li>';
 
             str += "</ul>";
 
