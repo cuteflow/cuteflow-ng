@@ -12,15 +12,15 @@ UserController.prototype.index = function(req, res) {
 
     User.find().sort({ 'username': 'asc' }).paginate(page, pagesize, function(err, users, pageCount){
                     res.render('user/index', {
-                        users: users
-                        , page: page
-                        , pages: pageCount / pagesize
-                    })
+                        users: users,
+                        page: page,
+                        pages: pageCount / pagesize
+                    });
                 });
 };
 
 UserController.prototype.delete = function(req, res, next) {
-    if (!req.query.id || req.query.id == "") return next();
+    if (!req.query.id || req.query.id === "") return next();
 
     User.findById(req.query.id, function(err, user) {
         if (err || !user) return next();
@@ -29,21 +29,21 @@ UserController.prototype.delete = function(req, res, next) {
         req.flash('success', { msg: i18n.t("fields.remove.success", user.username) });
         res.redirect('/user');
     });
-}
+};
 
 UserController.prototype.create = function(req, res) {
     res.render('user/create', {user: new User(), password: "", errors: {}});
-}
+};
 
 UserController.prototype.edit = function(req, res, next) {
-    if (!req.query.id || req.query.id == "") return next();
+    if (!req.query.id || req.query.id === "") return next();
 
     User.findById(req.query.id, function(err, user) {
         if (err || !user) return next();
 
         res.render('user/edit', {user: user, password: "cfpwd-hasnotchanged-$§!", errors: {}});
     });
-}
+};
 
 UserController.prototype.save = function(req, res, next) {
 
@@ -92,6 +92,6 @@ UserController.prototype.save = function(req, res, next) {
 
         res.render(template, {user: user, password: password, errors: errors});
     }
-}
+};
 
 module.exports = UserController;
