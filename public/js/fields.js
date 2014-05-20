@@ -13,7 +13,7 @@ $(function() {
             case 'number': template = _.template($('#type-number-template').html(), {}); break;
         }
 
-        if (template != null) {
+        if (template !== null) {
             $("#type-config").html(template);
         }
     });
