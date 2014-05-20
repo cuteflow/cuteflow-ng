@@ -18,7 +18,7 @@ module.exports = function helpers() {
 
             for (var p=0; p <= pages; p++) {
                 params.page = p;
-                var clas = page == p ? "active" : "no";
+                var clas = page === p ? "active" : "no";
                 str += '<li class="'+clas+'"><a href="'+parsedUrl.href+'?'+qs.stringify(params)+'">'+ (p+1) +'</a></li>';
             }
 
@@ -28,8 +28,8 @@ module.exports = function helpers() {
             str += "</ul>";
 
             return str;
-        }
+        };
 
         next();
-    }
-}
+    };
+};
