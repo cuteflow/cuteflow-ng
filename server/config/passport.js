@@ -1,5 +1,4 @@
 var LocalStrategy = require('passport-local').Strategy,
-    mongoose = require('mongoose'),
     User = require('../models/User');
 
 module.exports = function(passport) {
@@ -31,4 +30,4 @@ module.exports = function(passport) {
             });
         })
     );
-}
+};
