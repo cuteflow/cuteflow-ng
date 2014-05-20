@@ -42,18 +42,17 @@ module.exports = function(app) {
 
         app.use(function(req, res, next){
             console.log("404", req.originalUrl);
-            return res.status(404).render('404', { url: req.originalUrl, error: 'Not found' })
+            return res.status(404).render('404', { url: req.originalUrl, error: 'Not found' });
         });
 
         app.use(function(err, req, res, next){
-            res.status(500).render('500', { error: err.stack })
-        })
+            res.status(500).render('500', { error: err.stack });
+        });
     });
 
     app.configure('development', function() {
         app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
         app.locals.pretty = true;
-
     });
 
     app.configure('production', function() {
@@ -61,4 +60,4 @@ module.exports = function(app) {
     });
 
     i18n.registerAppHelper(app);
-}
+};
