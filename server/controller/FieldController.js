@@ -20,7 +20,7 @@ FieldController.prototype.index = function(req, res) {
 };
 
 FieldController.prototype.delete = function(req, res, next) {
-    if (!req.query.id || req.query.id == "") return next();
+    if (!req.query.id || req.query.id === "") return next();
 
     Field.findById(req.query.id, function(err, field) {
         if (err || !field) return next();
@@ -29,25 +29,25 @@ FieldController.prototype.delete = function(req, res, next) {
         req.flash('success', { msg: i18n.t("fields.remove.success", field.name) });
         res.redirect('/field');
     });
-}
+};
 
 FieldController.prototype.create = function(req, res) {
     res.render('field/create', {field: new Field()});
-}
+};
 
 FieldController.prototype.edit = function(req, res, next) {
-    if (!req.query.id || req.query.id == "") return next();
+    if (!req.query.id || req.query.id === "") return next();
 
     Field.findById(req.query.id, function(err, field) {
         if (err || !field) return next();
         res.render('field/edit', {field: field});
     });
-}
+};
 
 FieldController.prototype.save = function(req, res, next) {
     req.assert('fieldname', i18n.t('field.save.validation.name'));
 
-    var configuration = {}
+    var configuration = {};
     switch(req.body.type) {
         case 'text': configuration = this._extractTypeTextConfig(req); break;
         case 'textarea': configuration = this._extractTypeTextareaConfig(req); break;
@@ -65,11 +65,11 @@ FieldController.prototype.save = function(req, res, next) {
         readOnly: req.body.readonly,
 
         configuration: configuration
-    }
+    };
 
     var errors = req.validationErrors(true);
     if (!errors) {
-        if (!req.query.id || req.query.id == "") {
+        if (!req.query.id || req.query.id === "") {
             var field = new Field(values);
             field.save();
 
@@ -87,43 +87,43 @@ FieldController.prototype.save = function(req, res, next) {
     }
     else {
         var field = new Field(values);
-        var template = (!req.query.id || req.query.id == "") ? "field/create" : "field/edit";
+        var template = (!req.query.id || req.query.id === "") ? "field/create" : "field/edit";
         res.render(template, {field: field, errors: errors});
     }
-}
+};
 
 FieldController.prototype._extractTypeTextConfig = function(req) {
     return {
         default: req.body.text_default,
         validationRegexp: req.body.text_validation
     };
-}
+};
 
 FieldController.prototype._extractTypeTextareaConfig = function(req) {
     return {
         default: req.body.textarea_default
     };
-}
+};
 
 FieldController.prototype._extractTypeFileConfig = function(req) {
     return {
         validationRegexp: req.body.file_validation
     };
-}
+};
 
 FieldController.prototype._extractTypeCheckboxConfig = function(req) {
     console.log("req", req.body);
     return {
         default: req.body.checkbox_default
     };
-}
+};
 
 FieldController.prototype._extractTypeNumberConfig = function(req) {
     return {
         default: req.body.number_default,
         validationRegexp: req.body.number_validation
     };
-}
+};
 
 FieldController.prototype._extractTypeDateConfig = function(req) {
     return {
@@ -131,6 +131,6 @@ FieldController.prototype._extractTypeDateConfig = function(req) {
         dateFormat: req.body.date_format,
         validationRegexp: req.body.date_validation
     };
-}
+};
 
 module.exports = FieldController;
