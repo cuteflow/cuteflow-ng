@@ -5,4 +5,4 @@ Implementation effort for the next generation CuteFlow based on a MEAN-Stack (Mo
 
 *Please keep in mind that this project is not intended for production at the moment*
 
-
+[![Code Climate](https://codeclimate.com/github/cuteflow/cuteflow-ng.png)](https://codeclimate.com/github/cuteflow/cuteflow-ng)
