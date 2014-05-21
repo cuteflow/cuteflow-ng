@@ -7,3 +7,4 @@ Implementation effort for the next generation CuteFlow based on a MEAN-Stack (Mo
 
 [![Code Climate](https://codeclimate.com/github/cuteflow/cuteflow-ng.png)](https://codeclimate.com/github/cuteflow/cuteflow-ng)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+[![Stories in Ready](https://badge.waffle.io/cuteflow/cuteflow-ng.png?label=ready&title=Ready)](https://waffle.io/cuteflow/cuteflow-ng)
